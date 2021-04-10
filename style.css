@@ -1,0 +1,136 @@
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "Nunito",sans-serif;
+  background: #92a8d1;
+}
+
+.input{
+  text-align: center;
+  margin: 10px auto;
+}
+
+.input_text{
+  text-align: center;
+  margin: 30px auto;
+  font-size:18pt;
+  height:420px;
+  width:200px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.input_text2{
+  text-align: center;
+  margin: 10px auto;
+  
+}
+
+#context{
+  text-align: center;
+  /*width: 50%;*/
+  margin: 20px auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Nunito",sans-serif;
+  /*font-weight:bold;*/
+  font-size: 18px;
+  background: #f8f8f8;
+  width: 900px;
+  
+}
+  
+
+
+.main{
+  text-align: center;
+  /*margin: 50px auto;*/
+  /*padding: 15px 30px;*/
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
+  
+}
+.main p{
+  text-align: left;
+}
+  
+
+
+.description{
+  text-align: left;
+  /*margin: 50px auto;*/
+  /*padding: 15px 30px;*/
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
+  
+}
+
+input[type="submit"]{
+  padding: 15px 30px;
+  background: #e7e7e7;
+  border: none;
+  border-radius: 1px;
+  font-family: "Nunito",sans-serif;
+  font-weight:bold;
+  font-size: 20px;
+}
+
+.input input[type="text"]{
+  width: 900px;
+  height: 100px;
+  padding: 5px 10px;
+  background: #e7e7e7;
+  border: none;
+  border-radius: 1px;
+  font-family: "Nunito",sans-serif;
+  font-weight:bold;
+  font-size: 20px;
+}
+
+.input2 input[type="text"]{
+  width: 900px;
+  height: 110px;
+  padding: 5px 10px;
+  background: #e7e7e7;
+  border: none;
+  border-radius: 1px;
+  font-family: "Nunito",sans-serif;
+  font-weight:bold;
+  font-size: 20px;
+}
+
+.card{
+  width: 50%;
+  background: #e7e7e7;
+  height: 10vh;
+  margin: 30px auto;
+  border-radius: 2px;
+}
+
+
+.close{
+  float: right;
+  margin-top: -2px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.card h1{
+  padding: 5px 0;
+  text-align: center;
+}
+
+.card p{
+  text-align: center;
+  margin:40px 0;
+  font-size:20px;
+}

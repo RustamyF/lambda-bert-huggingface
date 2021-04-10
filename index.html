@@ -1,0 +1,45 @@
+<!--<script src="script.js" defer></script>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>OpenWeatherMap Api</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="main">
+    <div class="header">
+      <h1>Question and Answer using BERT and Huggingface Transformers</h1><br>
+      <p>The backend is deployed to AWS lambda. If you experience delay in receiving your response, it is because of the cold start from lambda server. On your second try, you will get your response much faster</p>
+    </div> 
+    </div>
+    <br>
+    
+         <div class="description">
+        <h3>Steps</h3>
+        <p>1. Enter the body of text that contains the answer in the context area</p>
+        <p>2. Enter the questions</p>
+        <p>3. Click the submit button</p>
+        </div>
+  
+  <textarea rows="27" cols="100" type="text" placeholder="Enter the context" id="context"></textarea>
+    <div class="input">
+      <input type="text" placeholder="Enter the question" class="input_text2", id="question"><p>
+      <input type="submit" value="Submit" class="submit">
+    </div>
+    
+    
+    
+    
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h1 class="name" id="name"></h1>
+    </div>
+  </div>
+<script src="app.js"></script>
+</body>
+</html>
