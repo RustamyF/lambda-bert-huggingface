@@ -8,7 +8,7 @@ provider:
 
 functions:
   questionanswering:
-    image: 883981835068.dkr.ecr.us-east-1.amazonaws.com/bert-lambda:latest #ecr url
+    image: {{aws account number}}.dkr.ecr.us-east-1.amazonaws.com/bert-lambda:latest #ecr url
     events:
       - http:
           path: qa # http path
