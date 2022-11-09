@@ -27,7 +27,7 @@ body{
 .input_text2{
   text-align: center;
   margin: 10px auto;
-  
+
 }
 
 #context{
@@ -42,9 +42,9 @@ body{
   font-size: 18px;
   background: #f8f8f8;
   width: 900px;
-  
+
 }
-  
+
 
 
 .main{
@@ -55,12 +55,12 @@ body{
   margin-left: auto;
   margin-right: auto;
   width: 900px;
-  
+
 }
 .main p{
   text-align: left;
 }
-  
+
 
 
 .description{
@@ -71,7 +71,7 @@ body{
   margin-left: auto;
   margin-right: auto;
   width: 900px;
-  
+
 }
 
 input[type="submit"]{
