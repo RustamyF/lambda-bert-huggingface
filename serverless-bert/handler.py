@@ -4,9 +4,10 @@ from transformers import AutoModelForQuestionAnswering, AutoTokenizer, AutoConfi
 import boto3
 import os
 import uuid
+import time
 
-dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table(os.environ['DYNAMODB_CUSTOMER_TABLE'])
+dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
 
 def encode(tokenizer, question, context):
     """encodes the question and context with a given tokenizer"""
@@ -43,8 +44,10 @@ def handler(event, context):
         body = json.loads(event['body'])
         # uses the pipeline to predict the answer
         answer = question_answering_pipeline(question=body['question'], context=body['context'])
+        timestamp = str(time.time())
         item = {
             'primary_key': str(uuid.uuid1()),
+            'createdAt': timestamp,
             'context': body['context'],
             'question': body['question'],
             'answer': answer,

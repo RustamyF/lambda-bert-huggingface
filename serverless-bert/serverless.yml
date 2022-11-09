@@ -6,7 +6,7 @@ provider:
   memorySize: 5120 # optional, in MB, default is 1024
   timeout: 30 # optional, in seconds, default is 6
   environment:
-    DYNAMODB_CUSTOMER_TABLE: ${self:service}-customerTable-${sls:stage}
+    DYNAMODB_TABLE: ${self:service}-customerTable-${sls:stage}
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -19,7 +19,7 @@ provider:
 
 functions:
   questionanswering:
-    image: 883981835068.dkr.ecr.us-east-1.amazonaws.com/bert-lambda:latest #ecr url
+    image: ${ACOUNT_NUMBER}.dkr.ecr.us-east-1.amazonaws.com/bert-lambda:v1 #ecr url
     events:
       - http:
           path: qa # http path
