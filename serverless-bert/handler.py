@@ -1,6 +1,12 @@
 import json
 import torch
 from transformers import AutoModelForQuestionAnswering, AutoTokenizer, AutoConfig
+import boto3
+import os
+import uuid
+
+dynamodb = boto3.resource('dynamodb')
+table = dynamodb.Table(os.environ['DYNAMODB_CUSTOMER_TABLE'])
 
 def encode(tokenizer, question, context):
     """encodes the question and context with a given tokenizer"""
@@ -37,6 +43,13 @@ def handler(event, context):
         body = json.loads(event['body'])
         # uses the pipeline to predict the answer
         answer = question_answering_pipeline(question=body['question'], context=body['context'])
+        item = {
+            'primary_key': str(uuid.uuid1()),
+            'context': body['context'],
+            'question': body['question'],
+            'answer': answer,
+        }
+        table.put_item(Item=item)
         return {
             "statusCode": 200,
             "headers": {

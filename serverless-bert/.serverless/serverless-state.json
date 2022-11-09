@@ -9,8 +9,23 @@
       "region": "us-east-1",
       "memorySize": 5120,
       "timeout": 30,
+      "environment": {
+        "DYNAMODB_CUSTOMER_TABLE": "serverless-bert-lambda-docker-customerTable-dev"
+      },
+      "iamRoleStatements": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "dynamodb:PutItem",
+            "dynamodb:Get*",
+            "dynamodb:Scan*",
+            "dynamodb:UpdateItem",
+            "dynamodb:DeleteItem"
+          ],
+          "Resource": "arn:aws:dynamodb:us-east-1:883981835068:table/serverless-bert-lambda-docker-customerTable-dev"
+        }
+      ],
       "stage": "dev",
-      "variableSyntax": "\\${([^{}:]+?(?:\\(|:)(?:[^:{}][^{}]*?)?)}",
       "versionFunctions": true,
       "compiledCloudFormationTemplate": {
         "AWSTemplateFormatVersion": "2010-09-09",
@@ -147,6 +162,9 @@
                             "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-bert-lambda-docker-dev*:*:*"
                           }
                         ]
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iamRoleStatements\"][0]"
                       }
                     ]
                   }
@@ -178,6 +196,11 @@
               "FunctionName": "serverless-bert-lambda-docker-dev-questionanswering",
               "MemorySize": 5120,
               "Timeout": 30,
+              "Environment": {
+                "Variables": {
+                  "DYNAMODB_CUSTOMER_TABLE": "serverless-bert-lambda-docker-customerTable-dev"
+                }
+              },
               "Role": {
                 "Fn::GetAtt": [
                   "IamRoleLambdaExecution",
@@ -189,7 +212,7 @@
               "QuestionansweringLogGroup"
             ]
           },
-          "QuestionansweringLambdaVersiondXRQBKox99Qdvc4vJVqopqCmNVu82O2QpQeR8BTfbA8": {
+          "QuestionansweringLambdaVersion3Tz8FfoL0i5nd4b9zFOedH1JtNJwAG31XdlYwUMaE": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
@@ -267,9 +290,12 @@
                 }
               },
               "MethodResponses": []
-            }
+            },
+            "DependsOn": [
+              "QuestionansweringLambdaPermissionApiGateway"
+            ]
           },
-          "ApiGatewayDeployment1616188340898": {
+          "ApiGatewayDeployment1667953263480": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -317,18 +343,43 @@
                 ]
               }
             }
+          },
+          "CustomerTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "Properties": {
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "primary_key",
+                  "AttributeType": "S"
+                }
+              ],
+              "BillingMode": "PAY_PER_REQUEST",
+              "KeySchema": [
+                {
+                  "AttributeName": "primary_key",
+                  "KeyType": "HASH"
+                }
+              ],
+              "TableName": "serverless-bert-lambda-docker-customerTable-dev"
+            }
           }
         },
         "Outputs": {
           "ServerlessDeploymentBucketName": {
             "Value": {
               "Ref": "ServerlessDeploymentBucket"
+            },
+            "Export": {
+              "Name": "sls-serverless-bert-lambda-docker-dev-ServerlessDeploymentBucketName"
             }
           },
           "QuestionansweringLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "QuestionansweringLambdaVersiondXRQBKox99Qdvc4vJVqopqCmNVu82O2QpQeR8BTfbA8"
+              "Ref": "QuestionansweringLambdaVersion3Tz8FfoL0i5nd4b9zFOedH1JtNJwAG31XdlYwUMaE"
+            },
+            "Export": {
+              "Name": "sls-serverless-bert-lambda-docker-dev-QuestionansweringLambdaFunctionQualifiedArn"
             }
           },
           "ServiceEndpoint": {
@@ -352,6 +403,9 @@
                   "/dev"
                 ]
               ]
+            },
+            "Export": {
+              "Name": "sls-serverless-bert-lambda-docker-dev-ServiceEndpoint"
             }
           }
         }
@@ -458,27 +512,52 @@
         "memory": 5120,
         "timeout": 30,
         "vpc": {},
-        "versionLogicalId": "QuestionansweringLambdaVersiondXRQBKox99Qdvc4vJVqopqCmNVu82O2QpQeR8BTfbA8"
+        "versionLogicalId": "QuestionansweringLambdaVersion3Tz8FfoL0i5nd4b9zFOedH1JtNJwAG31XdlYwUMaE"
       }
+    },
+    "resources": {
+      "Resources": {
+        "CustomerTable": {
+          "Type": "AWS::DynamoDB::Table",
+          "Properties": {
+            "AttributeDefinitions": [
+              {
+                "AttributeName": "primary_key",
+                "AttributeType": "S"
+              }
+            ],
+            "BillingMode": "PAY_PER_REQUEST",
+            "KeySchema": [
+              {
+                "AttributeName": "primary_key",
+                "KeyType": "HASH"
+              }
+            ],
+            "TableName": "serverless-bert-lambda-docker-customerTable-dev"
+          }
+        }
+      },
+      "Outputs": {}
     },
     "configValidationMode": "warn",
     "serviceFilename": "serverless.yml",
-    "layers": {},
     "initialServerlessConfig": {
-      "service": {
-        "$ref": "$[\"service\"][\"serviceObject\"]"
-      },
+      "service": "serverless-bert-lambda-docker",
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
+      },
+      "resources": {
+        "$ref": "$[\"service\"][\"resources\"]"
       }
     },
+    "layers": {},
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/serverless-bert-lambda-docker/dev/1616188342127-2021-03-19T21:12:22.127Z",
+    "artifactDirectoryName": "serverless/serverless-bert-lambda-docker/dev/1667953265499-2022-11-09T00:21:05.499Z",
     "artifact": ""
   }
 }
