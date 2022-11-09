@@ -37,7 +37,7 @@ function addPost(e){
   
   
   
-  .catch(err => alert("Wrong city name!"));
+  .catch(err => alert("Server error!"));
   }
   
 
