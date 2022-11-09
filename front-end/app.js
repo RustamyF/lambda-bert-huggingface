@@ -14,10 +14,10 @@ button.addEventListener('click', addPost)
 
 function addPost(e){
   e.preventDefault();
-  
+
   let context = document.getElementById('context').value;
   let question = document.getElementById('question').value;
-  
+
   fetch(url, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     headers: {
@@ -27,20 +27,13 @@ function addPost(e){
     body: JSON.stringify({context:context,question:question})
   })
   .then(response => response.json())
-  
+
   .then((data) => {
     var final = data['answer'];
     main.innerHTML = final;
-    
+
   })
   .then(data => console.log(data))
-  
-  
-  
-  .catch(err => alert("Wrong city name!"));
+
+  .catch(err => alert("Server error!"));
   }
-  
-
-
-
-

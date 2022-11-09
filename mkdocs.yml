@@ -1,0 +1,17 @@
+# mkdocs.yml
+site_name: Algostructure Docs
+
+theme:
+  name: "material"
+
+plugins:
+    - mkdocstrings:
+
+nav:
+  - index.md
+  - array.md
+  - linked-list.md
+  - binary-tree.md
+  - stack-and-queue.md
+  - hash-table.md
+  - graphs.md
