@@ -69,3 +69,8 @@ To deploy the archetecture, jus write the following in the same directory as the
 ```shell script
 serverless deploy
 ```
+
+
+``` py
+import tensorflow as tf
+```
