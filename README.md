@@ -17,3 +17,4 @@ The Lambda function is the inference server wrapped in a docker image and upload
  database.
 
 ![App Screenshot](assets/arch.png)
+<img src="https://github.com/RustamyF/lambda-bert-huggingface/blob/documentation/assets/arch.png" width="600" height="300">
