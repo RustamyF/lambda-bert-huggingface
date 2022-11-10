@@ -16,5 +16,4 @@ The Lambda function is the inference server wrapped in a docker image and upload
  server for monitory purposes. Lambda can talk to DynamoDB using an IAM role that only allows writing requests to the
  database.
 
-![App Screenshot](assets/arch.png)
-<img src="https://github.com/RustamyF/lambda-bert-huggingface/blob/documentation/assets/arch.png" width="600" height="300">
+<img src="assets/arch.png" width="700" height="350">
