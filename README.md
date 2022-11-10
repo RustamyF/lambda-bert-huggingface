@@ -1,3 +1,4 @@
+![Tests](https://github.com/RustamyF/lambda-bert-huggingface/actions/workflows/docs.yml/badge.svg)
 # Deploing serverless BERT NLP model using AWS Lambda, HuggingFace, and Docker
 ## What is AWS lambda?
 AWS Lambda is a serverless computing service in that we can run code without worrying about provisioning or managing servers. You only pay for what you use, and you are not charged anything if your application is not being used. It was originally developed to run computationally less expensive workloads, but now it can also be used for larger applications.
