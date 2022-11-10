@@ -1,9 +1,7 @@
 name: Docs
 # Controls when the workflow will run
 on:
-  push:
-    branches:
-      -master
+  push: [ push ]
 
 jobs:
   build:
