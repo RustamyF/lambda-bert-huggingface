@@ -16,7 +16,7 @@ The Lambda function is the inference server wrapped in a docker image and upload
  server for monitory purposes. Lambda can talk to DynamoDB using an IAM role that only allows writing requests to the
  database.
 
-<img src="docs/assets/arch.png" width="700" height="350">
+<img src="assets/arch.png" width="700" height="350">
 
 ## How to use
 The Infrausturcture is deployed using [serverless](https://www.serverless.com/framework/docs) library.
