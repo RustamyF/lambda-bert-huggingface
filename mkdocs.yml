@@ -1,5 +1,12 @@
 # mkdocs.yml
-site_name: Algostructure Docs
+# Project information
+site_name: Serverless NLP
+site_author: Fahim Rustamy
+site_description: >-
+  A repository of serverless NLP projects
+# Repository
+repo_name: RustamyF/lambda-bert-huggingface
+repo_url: https://github.com/RustamyF/lambda-bert-huggingface
 
 theme:
   name: "material"
