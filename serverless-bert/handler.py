@@ -11,13 +11,15 @@ table = dynamodb.Table(os.environ["DYNAMODB_TABLE"])
 
 
 def encode(tokenizer, question, context):
-    """encodes the question and context with a given tokenizer"""
+    """encodes the question and context with a given tokenizer
+    that is understandable to the model"""
     encoded = tokenizer.encode_plus(question, context)
     return encoded["input_ids"], encoded["attention_mask"]
 
 
 def decode(tokenizer, token):
-    """decodes the tokens to the answer with a given tokenizer"""
+    """decodes the tokens to the answer with a given tokenizer
+    to return human readable response in a string format"""
     answer_tokens = tokenizer.convert_ids_to_tokens(token, skip_special_tokens=True)
     return tokenizer.convert_tokens_to_string(answer_tokens)
 
@@ -28,7 +30,8 @@ def serverless_pipeline(model_path="./model"):
     model = AutoModelForQuestionAnswering.from_pretrained(model_path)
 
     def predict(question, context):
-        """predicts the answer on an given question and context. Uses encode and decode method from above"""
+        """predicts the answer on an given question and context.
+        Uses encode and decode method from above"""
         input_ids, attention_mask = encode(tokenizer, question, context)
         start_scores, end_scores = model(
             torch.tensor([input_ids]), attention_mask=torch.tensor([attention_mask])
