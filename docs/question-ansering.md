@@ -184,6 +184,45 @@ def handler(event, context):
 ```
 You can see all the code in [handler.py](https://github.com/RustamyF/lambda-bert-huggingface/blob/git-workflow/serverless-bert/handler.py) file.
 
+### Dockerize everything
+Since Lambda functions now support docker images, we can dockerize everything and upload it to the Amazon Elastic
+Container Registry (Amazon ECR) repository. The Lambda function will access this image to make predictions. The Dockerfile uses
+AWS's published base image for Lambda functions.
+
+```shell
+FROM public.ecr.aws/lambda/python:3.8
+
+# Copy function code and models into our /var/task
+COPY ./ ${LAMBDA_TASK_ROOT}/
+
+# install our dependencies
+RUN python3 -m pip install -r requirements.txt --target ${LAMBDA_TASK_ROOT}
+
+# run get_model.py to get model weights and tokenizers
+RUN python3 get_model.py
+
+# Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
+CMD [ "handler.handler" ]
+```
+
+We need to send to build, tag and push the docker image to the ECR repository. First, we need to login to our ECR repository
+using aws CLI.
+
+```shell
+aws_region=<your aws region>
+aws_account_id=<your aws account>
+
+aws ecr get-login-password --region $aws_region \
+| docker login username AWS --password-stdin $aws_account_id.dkr.ecr.$aws_region.amazonaws.com
+```
+
+Then build, tag and push the docker image to the ECR repository.
+
+```shell
+docker build -t nlp-lambda:v1 serverless-bert/.
+docker tag nlp-lambda:v1 $aws_account_id.dkr.ecr.$aws_region.amazonaws.com/nlp-lambda:v1
+docker push $aws_account_id.dkr.ecr.$aws_region.amazonaws.com/nlp-lambda:v1
+```
 ## Serverless
 Question and Answering System
 
