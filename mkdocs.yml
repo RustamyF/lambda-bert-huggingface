@@ -10,7 +10,22 @@ repo_url: https://github.com/RustamyF/lambda-bert-huggingface
 
 theme:
   name: "material"
+  features:
+    - content.code.annotate
 
 nav:
   - index.md
   - question-ansering.md
+
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/frustamy

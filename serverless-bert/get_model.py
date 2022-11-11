@@ -2,7 +2,8 @@ from transformers import AutoModelForQuestionAnswering, AutoTokenizer
 
 
 def get_model(model):
-    """Loads model from Hugginface model hub"""
+    """Loads model from Hugginface model hub into
+    the ./model directory"""
     try:
         model = AutoModelForQuestionAnswering.from_pretrained(model, use_cdn=True)
         model.save_pretrained("./model")
@@ -11,7 +12,8 @@ def get_model(model):
 
 
 def get_tokenizer(tokenizer):
-    """Loads tokenizer from Hugginface model hub"""
+    """Loads tokenizer from Hugginface model hubinto
+    the ./model directory"""
     try:
         tokenizer = AutoTokenizer.from_pretrained(tokenizer)
         tokenizer.save_pretrained("./model")
