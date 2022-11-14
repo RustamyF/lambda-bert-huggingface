@@ -22,11 +22,11 @@ def serverless_pipeline(model_path="./model"):
     tokenizer = AutoTokenizer.from_pretrained(model_path)
     model = AutoModelForCausalLM.from_pretrained(model_path)
 
-    def predict(prompt):
+    def predict(prompt, max_length=60):
         """predicts the answer on an given question and context.
         Uses encode and decode method from above"""
         input_ids = encode(tokenizer, prompt)
-        ans_tokens = model.generate(input_ids, do_sample=False, max_length=60)
+        ans_tokens = model.generate(input_ids, do_sample=False, max_length=max_length)
         answer = decode(tokenizer, ans_tokens)
         return answer
 
@@ -42,7 +42,9 @@ def handler(event, context):
         # loads the incoming event into a dictonary
         body = json.loads(event["body"])
         # uses the pipeline to predict the answer
-        answer = text_generating_pipeline(prompt=body["prompt"])
+        answer = text_generating_pipeline(
+            prompt=body["prompt"], max_length=body["max_length"]
+        )
         return {
             "statusCode": 200,
             "headers": {

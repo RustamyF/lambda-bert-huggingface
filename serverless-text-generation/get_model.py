@@ -21,5 +21,5 @@ def get_tokenizer(tokenizer):
         raise (e)
 
 
-get_model("gpt2-medium")
-get_tokenizer("gpt2-medium")
+get_model("distilgpt2")
+get_tokenizer("distilgpt2")
