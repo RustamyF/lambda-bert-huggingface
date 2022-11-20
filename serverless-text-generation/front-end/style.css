@@ -18,8 +18,8 @@ body{
   text-align: center;
   margin: 30px auto;
   font-size:18pt;
-  height:420px;
-  width:200px;
+  height:110px;
+  width:100px;
   word-wrap: break-word;
   word-break: break-all;
 }
@@ -41,10 +41,9 @@ body{
   /*font-weight:bold;*/
   font-size: 18px;
   background: #f8f8f8;
-  width: 900px;
+  width: 700px;
 
 }
-
 
 
 .main{
@@ -54,7 +53,7 @@ body{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 900px;
+  width: 700px;
 
 }
 .main p{
@@ -70,22 +69,27 @@ body{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 900px;
+  width: 700px;
 
 }
 
 input[type="submit"]{
   padding: 15px 30px;
-  background: #e7e7e7;
+  background: #333;
+  color: #fff;
   border: none;
-  border-radius: 1px;
+  border-radius: 5px;
   font-family: "Nunito",sans-serif;
   font-weight:bold;
   font-size: 20px;
+  margin: 5px 0;
+}
+input[type="submit"]:hover {
+  background: #444;
 }
 
 .input input[type="text"]{
-  width: 900px;
+  width: 700px;
   height: 100px;
   padding: 5px 10px;
   background: #e7e7e7;
@@ -97,7 +101,7 @@ input[type="submit"]{
 }
 
 .input2 input[type="text"]{
-  width: 900px;
+  width: 700px;
   height: 110px;
   padding: 5px 10px;
   background: #e7e7e7;
@@ -109,9 +113,9 @@ input[type="submit"]{
 }
 
 .card{
-  width: 50%;
+  width: 700px;
   background: #e7e7e7;
-  height: 10vh;
+  height: 20vh;
   margin: 30px auto;
   border-radius: 2px;
 }
@@ -127,10 +131,22 @@ input[type="submit"]{
 .card h1{
   padding: 5px 0;
   text-align: center;
+  height: 210px;
 }
 
 .card p{
   text-align: center;
   margin:40px 0;
-  font-size:20px;
+  font-size:12px;
+}
+
+.btn {
+  display: block;
+  padding: 15px 30px;
+  padding: 10px 15px;
+  border: 0;
+  background: #333;
+  color: #fff;
+  border-radius: 5px;
+  margin: 5px 0;
 }

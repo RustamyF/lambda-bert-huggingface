@@ -15,16 +15,20 @@ button.addEventListener('click', addPost)
 function addPost(e){
   e.preventDefault();
 
-  let promt = document.getElementById('context').value;
-  let max_length = document.getElementById('question').value;
-
+  let text_data = document.getElementById('context').value;
+  let max_length =parseInt(document.getElementById('question').value);
+  console.log(max_length)
+  var raw = JSON.stringify({
+  "prompt": text_data,
+  "max_length": max_length
+  });
   fetch(url, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     headers: {
       'Content-Type': 'application/json',
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: JSON.stringify({promt:promt,max_length:max_length})
+    body: raw
   })
   .then(response => response.json())
 
