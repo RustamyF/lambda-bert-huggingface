@@ -70,7 +70,7 @@ If you want to start a project from zero, some templates can be used by running 
 the serverless configuration file to deploy a Lambda function with API gateway:
 
 ```yaml
-service: serverless-bert-lambda-docker
+service: serverless-bert-qa-lambda-docker
 
 provider:
   name: aws # provider

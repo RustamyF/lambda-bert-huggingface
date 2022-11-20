@@ -33,7 +33,7 @@ If you want to start a project from zero, there are
 some templates that can be used by running serverless in the terminal and following the prompts. Here is an example of
 the serverless configuration file to deploy a Lambda function with API gateway:
 ```yaml
-service: serverless-bert-lambda-docker
+service: serverless-bert-qa-lambda-docker
 
 provider:
   name: aws # provider
@@ -48,8 +48,8 @@ functions:
           path: qa # http path
           method: post # http method
 ```
-The complete serverless.yaml file that includes DynamoDB integration is written in this [file](serverless-bert/serverless.yaml).
-To deploy the archetecture, jus write the following in the same directory as the [serverless.yaml](serverless-bert/serverless.yaml) file.
+The complete serverless.yaml file that includes DynamoDB integration is written in this [file](serverless-bert-qa/serverless.yaml).
+To deploy the archetecture, jus write the following in the same directory as the [serverless.yaml](serverless-bert-qa/serverless.yaml) file.
 
 ```shell script
 serverless deploy
