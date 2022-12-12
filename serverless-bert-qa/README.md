@@ -1,11 +1,13 @@
 # Question Answering NLP Applications
-## What is a Question and AnsWering NLP
+
 Question-answering NLP models are often used in applications such as search engines, customer service chatbots,
 and virtual assistants. This [blog](https://medium.com/@faheemrustamy/serverless-question-answering-nlp-1e27fa83b04) post
 described the QA NLP problem and built and deployed a full stack serverless
 QA NLP application using the HuggingFace library and AWS infrastructure. A Serverless ML application may not be a
  good deployment approach for all use cases, but it is a great first step to you put your models in production without
-  worrying about the underlying infrastructure.
+  worrying about the underlying infrastructure. Following the blog post for more information.
+
+[![App Screenshot](../docs/assets/blog-post.JPG)](https://medium.com/@faheemrustamy/serverless-question-answering-nlp-1e27fa83b04)
 
 ## Build Docker Image
 We need to send to build, tag and push the docker image to the ECR repository. First, we need to login to our ECR repository
