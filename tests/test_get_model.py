@@ -15,7 +15,7 @@ class TestDuplicateZeros(unittest.TestCase):
 
     def test_get_model_correct(self):
         get_model("mrm8488/mobilebert-uncased-finetuned-squadv2")
-        self.assertTrue("config.json" in set(os.listdir("model/")))
+        self.assertTrue("confg.json" in set(os.listdir("model/")))
 
     def test_get_tokenizer(self):
         with self.assertRaises(Exception) as context:
