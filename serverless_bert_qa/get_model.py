@@ -21,5 +21,6 @@ def get_tokenizer(tokenizer):
         raise (e)
 
 
-get_model("mrm8488/mobilebert-uncased-finetuned-squadv2")
-get_tokenizer("mrm8488/mobilebert-uncased-finetuned-squadv2")
+if __name__ == "__main__":
+    get_model("mrm8488/mobilebert-uncased-finetuned-squadv2")
+    get_tokenizer("mrm8488/mobilebert-uncased-finetuned-squadv2")

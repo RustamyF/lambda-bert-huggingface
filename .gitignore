@@ -1,3 +1,6 @@
 serverless-bert-qa/.serverless
 site
 serverless-text-generation/.serverless
+.pytest_cache
+__pycache__
+model
